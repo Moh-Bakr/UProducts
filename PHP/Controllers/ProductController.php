@@ -1,13 +1,14 @@
 <?php
+require_once(__DIR__ . '/../Requests/FetchProductRequest.php');
 require_once(__DIR__ . '/../Requests/AddProductRequest.php');
-require_once(__DIR__ . '/../Requests/RDProductRequest.php');
+require_once(__DIR__ . '/../Requests/DeleteProductRequest.php');
 
 class ProductController
 {
 
     public static function Index()
     {
-        $products = RDProductRequest::FetchAll();
+        $products = FetchProductRequest::FetchAll();
         $request = Self::DeleteProducts();
         require_once(__DIR__ . '/../Views/ components/product-list.php');
     }
@@ -19,8 +20,9 @@ class ProductController
 
     public static function DeleteProducts()
     {
-        RDProductRequest::DeleteP();
+        DeleteProductRequest::DeleteProducts();
     }
+
     public static function Error()
     {
         require_once(__DIR__ . '/../Views/layouts/error.php');
